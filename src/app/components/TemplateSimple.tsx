@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTelegram, faTwitter, faWhatsapp, faYoutube, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-
-
 type Account = {
   i?: string; // Image URL
   n?: string; // Name
@@ -20,7 +18,7 @@ type Account = {
   e?: string; // Email
   gh?: string; // GitHub URL
   l?: string; // LinkedIn URL
-  ls?: Array<{ id: number, l: string; i?: string; u: string }>; // External links
+  ls?: Array<{ l: string; u: string }>; // External links
 };
 
 type Props = {

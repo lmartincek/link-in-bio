@@ -25,6 +25,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button:not(.drag-handle) {
+  cursor: pointer;
+}
+
 [multiple],[type=date],[type=datetime-local],[type=email],[type=month],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=time],[type=url],[type=week],select,textarea {
   --tw-shadow: 0 0 #;
   -webkit-appearance: none;

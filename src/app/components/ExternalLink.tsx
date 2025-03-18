@@ -3,7 +3,7 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
 
-type ExternalLinkProps = {
+export type ExternalLinkProps = {
   label: string;
   url: string;
 };

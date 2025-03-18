@@ -1,14 +1,17 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type SortableItemProps = {
-  id: string;
-  children: React.ReactNode;
-};
-
-export const SortableItem: React.FC<SortableItemProps> = ({ id, children }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+export const SortableItem = ({ id, children }) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -16,7 +19,10 @@ export const SortableItem: React.FC<SortableItemProps> = ({ id, children }) => {
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div ref={setNodeRef} style={style} {...attributes} className="relative">
+      <button {...listeners} className="drag-handle absolute left-[-40px] z-[100] h-[150px] px-4 cursor-grabbing">
+          <FontAwesomeIcon icon={faGripVertical} />
+      </button>
       {children}
     </div>
   );

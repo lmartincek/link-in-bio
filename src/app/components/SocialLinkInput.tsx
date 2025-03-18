@@ -18,7 +18,7 @@ export const SocialLinkInput: React.FC<SocialLinkInputProps> = ({
   onChange,
 }) => {
   return (
-    <div>
+    <div className="my-4 md:my-0">
       <label htmlFor={label.toLowerCase()} className="block text-sm font-medium text-gray-700">
         {label}
       </label>

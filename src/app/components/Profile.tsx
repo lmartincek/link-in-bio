@@ -37,6 +37,7 @@ export const Profile: React.FC<Props> = ({
                 name="name"
                 id="name"
                 autoComplete="given-name"
+                placeholder="Your name"
                 value={name}
                 onChange={(e) => onUpdateName(e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -55,7 +56,7 @@ export const Profile: React.FC<Props> = ({
                   name="about"
                   rows={3}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder-slate-400"
-                  placeholder="I am an astronaut"
+                  placeholder="I am a content creator and I do..."
                   maxLength={100}
                   value={desc}
                   onChange={(e) => onUpdateDesc(e.target.value)}
@@ -73,6 +74,7 @@ export const Profile: React.FC<Props> = ({
                 type="text"
                 name="photo-url"
                 id="photo-url"
+                placeholder="https://myimage.url"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 value={image}
                 onChange={(e) => onUpdateImage(e.target.value)}

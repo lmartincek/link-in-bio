@@ -49,47 +49,47 @@ export const SocialLinksForm: React.FC<Props> = ({
   return (
     <FormSection title="Social Links" description="Add some social media links" defaultSlot={
     <div className="shadow sm:overflow-hidden sm:rounded-md">
-        <div className="grid grid-cols-2 gap-8 bg-white px-4 py-5 sm:p-6">
+        <div className="md:grid grid-cols-1 gap-8 bg-white px-4 py-5 sm:p-6">
           <SocialLinkInput
             label="Facebook"
             icon={faFacebook}
             value={facebook}
-            placeholder="https://fb.com/elonmusk"
+            placeholder="https://fb.com/yourname"
             onChange={onUpdateFacebook}
           />
           <SocialLinkInput
             label="Twitter"
             icon={faTwitter}
             value={twitter}
-            placeholder="https://twitter.com/elonmusk"
+            placeholder="https://twitter.com/youraccount"
             onChange={onUpdateTwitter}
           />
           <SocialLinkInput
             label="Instagram"
             icon={faInstagram}
             value={instagram}
-            placeholder="https://instagram.com/elonmusk"
+            placeholder="https://instagram.com/youraccount"
             onChange={onUpdateInstagram}
           />
           <SocialLinkInput
             label="Github"
             icon={faGithub}
             value={github}
-            placeholder="https://github.com/elonmusk"
+            placeholder="https://github.com/youraccount"
             onChange={onUpdateGithub}
           />
           <SocialLinkInput
             label="Telegram"
             icon={faTelegram}
             value={telegram}
-            placeholder="https://t.me/elonmusk"
+            placeholder="https://t.me/youraccount"
             onChange={onUpdateTelegram}
           />
           <SocialLinkInput
             label="Linkedin"
             icon={faLinkedin}
             value={linkedin}
-            placeholder="https://linkedin.com/elonmusk"
+            placeholder="https://linkedin.com/youraccount"
             onChange={onUpdateLinkedin}
           />
           <SocialLinkInput
@@ -103,14 +103,14 @@ export const SocialLinksForm: React.FC<Props> = ({
             label="Youtube"
             icon={faYoutube}
             value={youtube}
-            placeholder="https://youtube.com/elonmusk"
+            placeholder="https://youtube.com/youraccount"
             onChange={onUpdateYoutube}
           />
           <SocialLinkInput
             label="Whatsapp"
             icon={faWhatsapp}
             value={whatsapp}
-            placeholder="+9190000000000"
+            placeholder="+421 234 567 891"
             onChange={onUpdateWhatsapp}
           />
         </div>

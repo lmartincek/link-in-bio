@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{
-      hostname: "i.insider.com"
+      hostname: "upload.wikimedia.org"
     }],
   },
 };
