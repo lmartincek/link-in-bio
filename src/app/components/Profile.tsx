@@ -21,8 +21,7 @@ export const Profile: React.FC<Props> = ({
   return (
     <FormSection
       title="Profile"
-      description="Some public information about you"
-      defaultSlot={
+      description="Some public information about you">
         <div className="shadow sm:overflow-hidden sm:rounded-md">
           <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
             <div className="col-span-6 sm:col-span-3">
@@ -82,7 +81,6 @@ export const Profile: React.FC<Props> = ({
             </div>
           </div>
         </div>
-      }
-    />
+    </FormSection>
   );
 };

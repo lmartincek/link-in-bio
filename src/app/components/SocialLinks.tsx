@@ -47,7 +47,7 @@ export const SocialLinksForm: React.FC<Props> = ({
   onUpdateEmail,
 }) => {
   return (
-    <FormSection title="Social Links" description="Add some social media links" defaultSlot={
+    <FormSection title="Social Links" description="Add some social media links">
     <div className="shadow sm:overflow-hidden sm:rounded-md">
         <div className="md:grid grid-cols-1 gap-8 bg-white px-4 py-5 sm:p-6">
           <SocialLinkInput
@@ -115,6 +115,6 @@ export const SocialLinksForm: React.FC<Props> = ({
           />
         </div>
       </div>
-    } />
+    </FormSection>
   );
 };

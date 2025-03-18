@@ -11,6 +11,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
+export type ExternalLinksShort = {
+  id: number,
+  l: string, // label
+  u: string, // url
+}
+
 type Data = {
   n: string; // Name
   d: string; // Description
@@ -24,7 +30,7 @@ type Data = {
   e: string; // Email
   w: string; // WhatsApp
   y: string; // YouTube
-  ls: Array<{ id: number, l: string; u: string }>; // Links
+  ls: ExternalLinksShort[]; // Links
 };
 
 export default function Page() {
@@ -95,7 +101,7 @@ export default function Page() {
     });
   };
 
-  const onUpdateModelValue = useCallback((value) => {
+  const onUpdateModelValue = useCallback((value: ExternalLinksShort[]) => {
     setData((prevData) => ({ ...prevData, ls: value }));
   }, []);
 

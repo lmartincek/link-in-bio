@@ -1,15 +1,15 @@
-import { ReactNode } from "react"
+import React from "react"
 
 type Props = {
     title: string,
     description: string,
-    defaultSlot?: ReactNode,
+    children?: React.ReactNode,
 }
 
 export const FormSection: React.FC<Props> = ({
     title,
     description,
-    defaultSlot
+    children
 }) => {
 return (
     <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -23,8 +23,10 @@ return (
             </p>
         </div>
         </div>
-        <div className="mt-5 md:col-span-2 md:mt-0 relative">
-            {defaultSlot && defaultSlot}
-        </div>
+        {children && (
+            <div className="mt-5 md:col-span-2 md:mt-0 relative">
+                {children}
+            </div>
+        )}
     </div>
 )}

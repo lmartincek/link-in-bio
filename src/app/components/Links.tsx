@@ -5,6 +5,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  DragEndEvent,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -15,10 +16,16 @@ import { SortableItem } from "./SortableItem";
 import { FormSection } from "./FormSection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { ExternalLinksShort } from "../page";
 
 const generateId = () => Date.now();
 
-export const LinksForm = ({ modelValue, onUpdateModelValue }) => {
+type Props = {
+    modelValue: ExternalLinksShort[],
+    onUpdateModelValue: (value: ExternalLinksShort[]) => void;
+}
+
+export const LinksForm = ({ modelValue, onUpdateModelValue }: Props) => {
   const [links, setLinks] = useState(() =>
     modelValue.map((link) => ({ ...link, id: link.id || generateId() }))
   );
@@ -40,11 +47,11 @@ export const LinksForm = ({ modelValue, onUpdateModelValue }) => {
     setLinks((prevLinks) => [...prevLinks, newLink]);
   };
 
-  const removeLink = (id) => {
+  const removeLink = (id: number) => {
     setLinks((prevLinks) => prevLinks.filter((link) => link.id !== id));
   };
 
-  const updateLink = (id, field, value) => {
+  const updateLink = (id: number, field: "u" | "l", value: string) => {
     setLinks((prevLinks) =>
       prevLinks.map((link) =>
         link.id === id ? { ...link, [field]: value } : link
@@ -52,7 +59,7 @@ export const LinksForm = ({ modelValue, onUpdateModelValue }) => {
     );
   };
 
-  const handleDragEnd = (event) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
     setLinks((prevLinks) => {
@@ -65,8 +72,7 @@ export const LinksForm = ({ modelValue, onUpdateModelValue }) => {
   return (
     <FormSection
       title="Links"
-      description="Add some links here"
-      defaultSlot={
+      description="Add some links here">
         <div>
           <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
             <SortableContext items={links.map((link) => link.id)} strategy={verticalListSortingStrategy}>
@@ -117,7 +123,6 @@ export const LinksForm = ({ modelValue, onUpdateModelValue }) => {
             <FontAwesomeIcon icon={faCirclePlus} className="h-6 w-6" /> Add Link
           </button>
         </div>
-      }
-    />
-  );
+        </FormSection>
+    );
 };

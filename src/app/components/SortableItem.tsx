@@ -4,7 +4,12 @@ import { CSS } from "@dnd-kit/utilities";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const SortableItem = ({ id, children }) => {
+type Props = {
+  id: number,
+  children: React.ReactNode,
+}
+
+export const SortableItem = ({ id, children }: Props) => {
   const {
     attributes,
     listeners,
