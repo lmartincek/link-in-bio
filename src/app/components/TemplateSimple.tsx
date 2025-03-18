@@ -32,7 +32,6 @@ export const TemplateSimple: React.FC<Props> = ({ acc }) => {
     !acc.f &&
     !acc.t &&
     !acc.ig &&
-    !acc.m &&
     !acc.tg &&
     !acc.w &&
     !acc.y &&

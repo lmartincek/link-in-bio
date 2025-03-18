@@ -4,7 +4,7 @@ import Link from "next/link";
 import { encodeData } from "../utils/transformer";
 import { Profile } from "./components/Profile";
 import { SocialLinksForm } from "./components/SocialLinks";
-import { LinksForm } from "./components/Links";
+// import { LinksForm } from "./components/Links";
 import { Preview } from "./components/Preview";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,7 +37,6 @@ export default function Page() {
     ig: "",
     gh: "",
     tg: "",
-    m: "",
     l: "",
     e: "",
     w: "",

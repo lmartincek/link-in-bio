@@ -1,14 +1,14 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { decodeData } from "../../utils/transformer";
 import { TemplateSimple } from "../components/TemplateSimple";
 
 const DynamicPage = () => {
   const searchParams = useSearchParams();
   const data = searchParams.get("data");
-  const [decodedData, setDecodedData] = useState<any>(null);
+  const [decodedData, setDecodedData] = useState(null);
 
   useEffect(() => {
     if (!data) return;
@@ -47,4 +47,10 @@ const Loader = () => (
   </div>
 );
 
-export default DynamicPage;
+export default function DynamicPageWithSuspense() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <DynamicPage />
+    </Suspense>
+  );
+}
