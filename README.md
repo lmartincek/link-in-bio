@@ -2,6 +2,8 @@
 
 Bio-in-Link is a lightweight, database-free **link-in-bio** tool where all data is stored directly in the URL. Users can create and share a personalized bio page with social links and custom buttons without requiring backend storage.
 
+![screen](./public/screen.png)
+
 ## ✨ Features
 
 - No database required – all user data is encoded in the URL.
