@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import Image from "next/image";
+import React from "react";
 import { ExternalLink } from "./ExternalLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTelegram, faTwitter, faWhatsapp, faYoutube, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";

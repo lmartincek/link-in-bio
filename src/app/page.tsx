@@ -1,15 +1,10 @@
 'use client'
 import React, { useCallback, useState } from "react";
-import Link from "next/link";
 import { encodeData } from "../utils/transformer";
 import { Profile } from "./components/Profile";
 import { SocialLinksForm } from "./components/SocialLinks";
 import { LinksForm } from "./components/Links";
 import { Preview } from "./components/Preview";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export type ExternalLinksShort = {
   id: number,
@@ -97,7 +92,7 @@ export default function Page() {
   const publish = () => {
     const url = `${window.location.origin}/1?data=${encodeData(data)}`;
     navigator.clipboard.writeText(url).then(() => {
-      alert("Link copied to clipboard");
+      alert("Link copied to clipboard, now you can paste it to new tab and see your template");
     });
   };
 
@@ -148,32 +143,12 @@ export default function Page() {
             onUpdateModelValue={onUpdateModelValue}
           />
         </div>
-        <div className="border-t bg-white flex items-center">
-          <button
-            onClick={prefillDemoData}
-            className="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-          >
-            <span> Add demo data </span>
-            <FontAwesomeIcon icon={faCode} className="h-4 w-4" />
-          </button>
-          <button
-            onClick={publish}
-            className="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-          >
-            <span> Publish </span>
-            <FontAwesomeIcon icon={faPaperPlane} className="h-4 w-4" />
-          </button>
-          <Link
-            href="https://github.com/lmartincek/link-in-bio"
-            target="_blank"
-            className="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-          >
-            <span> Github </span>
-            <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
-          </Link>
-        </div>
       </div>
-      <Preview data={data} />
+      <Preview 
+          data={data} 
+          handlePrefillDemoData={prefillDemoData}
+          handlePublish={publish}
+           />
     </div>
   );
 };
