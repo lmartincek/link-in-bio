@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { ExternalLink } from "./ExternalLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,12 +37,22 @@ export const TemplateSimple: React.FC<Props> = ({ acc }) => {
     !acc.gh &&
     !acc.l;
 
+    function isValidUrl(url?: string) {
+    if (!url) return false
+    try {
+      new URL(url);
+      return true;
+    } catch (e) {
+      return !e;
+    }
+  }
+
   return (
     <main className="p-4 bg-white h-full w-full space-y-8 pt-12 max-w-lg mx-auto">
       <div className="text-center">
-        {acc.i && (
+        {(acc.i && isValidUrl(acc.i)) && (
           <div className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">
-            <Image src={acc.i} width={50} height={50} alt="name" className="h-full w-full object-cover" />
+            <img src={acc.i} width={50} height={50} alt="photo" className="h-full w-full object-cover" />
           </div>
         )}
         {acc.n && <h1 className="text-2xl font-bold mt-4 text-slate-800">{acc.n}</h1>}

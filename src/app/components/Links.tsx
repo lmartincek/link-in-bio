@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   DndContext,
   closestCenter,
@@ -18,46 +18,52 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { ExternalLinksShort } from "../page";
 
-const generateId = () => Date.now();
-
 type Props = {
     modelValue: ExternalLinksShort[],
     onUpdateModelValue: (value: ExternalLinksShort[]) => void;
 }
 
 export const LinksForm = ({ modelValue, onUpdateModelValue }: Props) => {
-  const [links, setLinks] = useState(() =>
-    modelValue.map((link) => ({ ...link, id: link.id || generateId() }))
-  );
+    const generateId = () => Math.floor(Math.random() * 100000);
 
-  useEffect(() => {
-    if (JSON.stringify(links) !== JSON.stringify(modelValue)) {
-      setLinks(modelValue.map((link) => ({ ...link, id: link.id || generateId() })));
-    }
-  }, [modelValue]);
-
-  useEffect(() => {
-    onUpdateModelValue(links);
-  }, [links, onUpdateModelValue]);
+    const processedModelValue = useMemo(() => {
+      return modelValue.map((link) => ({
+        ...link,
+        id: link.id ?? generateId(),
+      }));
+    }, [modelValue]);
+  
+    const [links, setLinks] = useState(processedModelValue);
+  
+    useEffect(() => {
+      setLinks(processedModelValue);
+    }, [JSON.stringify(modelValue)]);
+  
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        onUpdateModelValue(links);
+      }, 500);
+  
+      return () => clearTimeout(handler);
+    }, [links]);
+  
+    const appendLink = () => {
+      setLinks((prev) => [...prev, { id: generateId(), l: "", u: "" }]);
+    };
+  
+    const removeLink = (id: number) => {
+      setLinks((prev) => prev.filter((link) => link.id !== id));
+    };
+  
+    const updateLink = (id: number, field: "u" | "l", value: string) => {
+      setLinks((prev) =>
+        prev.map((link) =>
+          link.id === id ? { ...link, [field]: value } : link
+        )
+      );
+    };
 
   const sensors = useSensors(useSensor(PointerSensor));
-
-  const appendLink = () => {
-    const newLink = { id: generateId(), l: "", u: "" };
-    setLinks((prevLinks) => [...prevLinks, newLink]);
-  };
-
-  const removeLink = (id: number) => {
-    setLinks((prevLinks) => prevLinks.filter((link) => link.id !== id));
-  };
-
-  const updateLink = (id: number, field: "u" | "l", value: string) => {
-    setLinks((prevLinks) =>
-      prevLinks.map((link) =>
-        link.id === id ? { ...link, [field]: value } : link
-      )
-    );
-  };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -98,7 +104,7 @@ export const LinksForm = ({ modelValue, onUpdateModelValue }: Props) => {
                       <div className="col-span-2">
                         <label className="block text-sm font-medium text-gray-700">URL</label>
                         <input
-                          type="url"
+                          type="text"
                           value={link.u}
                           onChange={(e) => updateLink(link.id, "u", e.target.value)}
                           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -124,5 +130,5 @@ export const LinksForm = ({ modelValue, onUpdateModelValue }: Props) => {
           </button>
         </div>
         </FormSection>
-    );
+);
 };

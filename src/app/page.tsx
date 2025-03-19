@@ -164,7 +164,7 @@ export default function Page() {
             <FontAwesomeIcon icon={faPaperPlane} className="h-4 w-4" />
           </button>
           <Link
-            href="https://github.com/lmartincek/onelink"
+            href="https://github.com/lmartincek/link-in-bio"
             target="_blank"
             className="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
           >
